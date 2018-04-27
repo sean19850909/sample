@@ -35,4 +35,10 @@ class UsersController extends Controller
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
         return redirect()->route('users.show',[$user]);
     }
+
+    public function gravatar($size = '100')
+    {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "http://www.gravatar.com/avatar/$hash?s=$size";
+    }
 }
